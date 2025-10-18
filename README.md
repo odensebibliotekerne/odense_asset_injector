@@ -1,4 +1,4 @@
-# Webmaster Asset Injector Dev
+# Odense Asset Injector
 
 Modul som kan bruges til, at teste sin ccs / javascript, inden man sætter det ind i Asset Injector i Drupal.
 Kan også installeret som et lokalt modul på test/produktion.
