@@ -1,0 +1,43 @@
+/* Generel typografi */ 
+
+.univers {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* Tailwind CSS inspireret styling */
+
+:root, :host {
+  --spacing: .25rem;
+}    
+
+.flex {
+  display: flex;
+} 
+
+.gap-4 {
+  gap: calc(var(--spacing) * 4);
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+/* Serie billede container */
+.cover-stack {
+  position: relative;
+}
+
+/* Animation på materialetype pilene */
+
+.content-list-item__title svg {
+  transition: transform 0.4s ease;
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+.content-list-item__title:hover svg {
+  transform: scaleX(1.2);
+}

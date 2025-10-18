@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function odense_asset_injector_page_attachments(array &$attachments) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+
+  // Tjek om der er tale om en admin sti (starter normalt med /admin).
+  if (strpos($alias, '/admin') === 0) {
+    return;
+  }
+
+  // Vedhæft library overalt ellers.
+  $attachments['#attached']['library'][] = 'odense_asset_injector/asset_injector';
+
+  // Vedhæft work_of library på /work/work-of sti.
+  if (preg_match('#^/work/work-of#', $alias)) {
+    $attachments['#attached']['library'][] = 'odense_asset_injector/work_of';
+  }
+
+  // Vedhæft work_of library på /search sti.
+  if (preg_match('#^/search#', $alias)) {
+    $attachments['#attached']['library'][] = 'odense_asset_injector/search';
+  }
+
+  // Vedhæft work_of library på /serie sti.
+  if (preg_match('#^/serie#', $alias)) {
+    $attachments['#attached']['library'][] = 'odense_asset_injector/serie';
+  }
+
+  // Vedhæft work_of library på /univers sti.
+  if (preg_match('#^/univers#', $alias)) {
+    $attachments['#attached']['library'][] = 'odense_asset_injector/univers';
+  }
+
+}

@@ -1,0 +1,5 @@
+name: 'Odense Asset Injector'
+type: module
+description: 'Kode er kan indsættes i Asset Injektor eller bruges som et lokalt modul'
+package: 'Local'
+core_version_requirement: ^10

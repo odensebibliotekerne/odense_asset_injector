@@ -1,0 +1,27 @@
+asset_injector:
+  js:
+    js/utility.js: {}
+
+serie:
+  js:
+    js/serie.js: {}
+  css:
+    theme: 
+      css/serie.css: {}
+
+univers:
+  js:
+    js/univers.js: {}
+  css:
+    theme: 
+      css/univers.css: {}
+
+search:
+  js:
+    js/search.js: {}
+
+work_of:
+  js:
+    js/work-of.js: {}
+
+
