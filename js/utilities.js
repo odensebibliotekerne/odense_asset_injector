@@ -56,13 +56,20 @@
     }, interval);
   };
   
-  // --- Helper: get library token ---
-  async function getToken() {
+  // --- Helper: get token ---
+  async function getToken(type = "library") {
     try {
       const res = await fetch("/dpl-react/user-tokens");
       const js = await res.text();
-      const match = js.match(/setToken\("library",\s*"([^"]+)"\)/);
-      if (match && match[1]) return match[1];
+      
+      const matches = {
+        library: js.match(/setToken\("library",\s*"([^"]+)"\)/),
+        user: js.match(/setToken\("user",\s*"([^"]+)"\)/)
+      };
+
+      const token = matches[type]?.[1];
+      if (token) return token;
+
       throw new Error("Library token not found");
     } catch (err) {
       console.error("Error fetching token:", err);
@@ -149,3 +156,11 @@
   }
   
 })();
+
+/* Materiallist funktioner */
+
+window.addMaterialistItem = function (list, item) { }
+
+window.removeMaterialistItem = function (list, item) { }
+
+window.isMaterialistItemInList = function (list, item) { }

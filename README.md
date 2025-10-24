@@ -16,8 +16,6 @@ Generelle funktioner som f.eks. hentning af data fra FBI er defineret i utility.
 ## Serie
 Installation: Lav en helt almindelig side uden indhold på /serie
 
-Inden /serie
-
 Visning af serie på f.eks. /serie?sid=f297c5d4d347582deb504b9d3ff1af88f305d102e6863e11ca819eef0fc30cac
 Koden ligger i serie.js
 
@@ -32,3 +30,14 @@ Installation: Lav en helt almindelig side uden indhold på /univers
 
 Visning af universer på f.eks. /univers?pid=870979:134979356 
 Koden ligger i univers.js
+
+## "Content slider automatic" dato sortering 
+Arrangementer som varer over 8 dage sorteres til sidst
+
+sortEventSlider.js
+
+
+## Tilføj Event
+
+Integrationen til place2book bliver som standard slået fra.
+Koden ligger i add_event.js

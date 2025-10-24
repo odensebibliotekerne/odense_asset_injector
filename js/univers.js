@@ -57,9 +57,7 @@
                               (work) => `
                                 <li tabindex="-1">
                                   <div class="recommended-material recommended-material--in-grid">
-                                    <div class="recommended-material__icon">
-                                      <button type="button" aria-label="tilføj Hurry up tomorrow : original motion picture score til huskelisten" class="button-favourite"><svg height="24" width="24" class="icon-favourite" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.5 20L10.2675 18.921C5.89 15.1035 3 12.5858 3 9.49591C3 6.9782 5.057 5 7.675 5C9.154 5 10.5735 5.66213 11.5 6.70845C12.4265 5.66213 13.846 5 15.325 5C17.943 5 20 6.9782 20 9.49591C20 12.5858 17.11 15.1035 12.7325 18.9292L11.5 20Z" stroke-width="2"></path></svg></button>
-                                    </div>
+                                    ${window.materiallistComponent(work.titles?.main)}
                                     <a href="${work.series[0]?.seriesId ? "/serie?sid=" + work.series[0]?.seriesId : "/work/" + work.workId}" class="cover-stack hide-linkstyle cover cover--size-large cover--aspect-large"  tabindex="-1" aria-hidden="true">  
                                       ${!work.series[0]?.seriesId ? `<img src="${work.manifestations?.bestRepresentation?.cover?.detail}" class="cover__img cover__img--animate cover__img--shadow-medium" alt="">` : ""}
                                       ${typeof work.series?.[0]?.seriesId === "string" 
@@ -162,17 +160,18 @@
           }`,
           variables: { universeId: pid },
         }).then(data => {
-          console.log('Universe data:', data);
-          grouped_data = data.data.universe.workTypes.map((type) => ({
+          // Arranger data
+          const workTypes = data.data.universe.workTypes;
+          const works = data.data.universe.works;
+
+          const grouped_data = workTypes.map((type) => ({
             type,
-            works: data.data.universe.works.filter((work) =>
-              work.workTypes.includes(type),
-            ),
+            works: works.filter((work) => work.workTypes.includes(type)),
           }));
-          allWorkTypes = data.data.universe.works.flatMap(
-            (work) => work.workTypes,
-          );
-          uniqueWorkTypes = Array.from(new Set(allWorkTypes));
+
+          const uniqueWorkTypes = [...new Set(
+            works.flatMap((work) => work.workTypes)
+          )].sort((a, b) => workTypes.indexOf(a) - workTypes.indexOf(b));
 
           // Render univers
           renderUniverse(container, data, uniqueWorkTypes, grouped_data,);
@@ -235,7 +234,7 @@
         });     
         
       } else {
-        console.warn('Container ikke fundet');
+        return;
       }
     });
 

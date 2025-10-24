@@ -7,6 +7,11 @@ function odense_asset_injector_page_attachments(array &$attachments) {
   $current_path = \Drupal::service('path.current')->getPath();
   $alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
 
+  // Vedhæft add_event på /events/add/default sti.
+  if (preg_match('#^/events/add/default#', $alias)) {
+    $attachments['#attached']['library'][] = 'odense_asset_injector/add_event';
+  }
+
   // Tjek om der er tale om en admin sti (starter normalt med /admin).
   if (strpos($alias, '/admin') === 0) {
     return;

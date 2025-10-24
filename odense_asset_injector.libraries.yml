@@ -1,6 +1,8 @@
 asset_injector:
   js:
-    js/utility.js: {}
+    js/components.js: {}
+    js/utilities.js: {}
+    js/sortEventSlider.js: {}
 
 serie:
   js:
@@ -9,6 +11,14 @@ serie:
     theme: 
       css/serie.css: {}
 
+search:
+  js:
+    js/search.js: {}
+
+work_of:
+  js:
+    js/work_of.js: {}
+
 univers:
   js:
     js/univers.js: {}
@@ -16,12 +26,6 @@ univers:
     theme: 
       css/univers.css: {}
 
-search:
+add_event:
   js:
-    js/search.js: {}
-
-work_of:
-  js:
-    js/work-of.js: {}
-
-
+    js/add_event.js: {} 
