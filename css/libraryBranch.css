@@ -1,0 +1,5 @@
+@media screen and (max-width: 767px) {
+    .hero__inner>:not(.hero__cta) {
+        margin: 8px 0px!important;
+    }
+}

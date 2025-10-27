@@ -3,6 +3,23 @@ asset_injector:
     js/components.js: {}
     js/utilities.js: {}
     js/sortEventSlider.js: {}
+    js/libraryBranch.js: {}
+  css:
+    theme: 
+      css/libraryBranch.css: {}
+
+events:
+  js:
+    js/events.js: {}
+
+library_ branch:
+  js:
+      js/libraryBranch.js: {}
+  css:
+    theme: 
+      css/libraryBranch.css: {}
+  dependencies:
+    - novel/global-assets
 
 serie:
   js:
